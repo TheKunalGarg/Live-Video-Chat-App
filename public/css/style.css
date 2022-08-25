@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background-image: radial-gradient( #0d0d0d,#404040);
+}
+#video-table {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+video {
+  display: block;
+  flex: 1;
+  object-fit: cover;
+  border: 2px solid #111;
+  border-radius: 15px;
+  max-width: 500px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.main {
+  height: 100%;
+  display: flex;
+}
+.main__left {
+  flex: 0.77;
+  display: flex;
+  flex-direction: column;
+}
+.main__right {
+  flex: 0.23;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient( #262626,#1a1a1a);
+  border-left: 1px solid #3d3d42;
+  border-radius: 10px;
+}
+.main__videos {
+  flex-grow: 1;
+  background-image: radial-gradient( #0d0d0d,#404040);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main__controls {
+  display: flex;
+  background-image: radial-gradient( #262626,#1a1a1a);
+  color: #d2d2d2;
+  padding: 3px;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-bottom: 9px;
+}
+.main__controls_block {
+  display: flex;
+  margin-left: 110px;
+}
+.main__controls_button {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 15px;
+  margin: 2.5px;
+}
+.main__controls_button span {
+  margin-top: 2px;
+  display: block;
+}
+.main__controls_button:hover {
+  background-color: #34383b;
+}
+.main__controls_button i {
+  font-size: 18px;
+}
+.meet_url .leaveMeeting{
+  background-color: red;
+  color: #fff;
+}
+.meet_url :hover{
+  color: red;
+}
+.leaveMeeting :hover{
+  color: red;
+}
+.main__header {
+  color: #f5f5f5;
+  padding: 5px;
+  border-bottom: 2px solid #3d3d42;
+  display: inline-flex;
+  margin-left: 40px;
+  margin-right: 50px;
+}
+.main__chat__window {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 5px 5px 0 0px;
+  max-width: 265px;
+}
+.main__message_container {
+  padding: 22px 11px;
+  display: flex;
+}
+.main__message_container input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #f5f5f5;
+  user-select: none;
+  outline: none;
+}
+
+#all_messages li {
+  color: black;
+  list-style: none;
+  background-color:  #cccccc;
+  border-bottom: 1px solid #3d3d42;
+  padding: 10px 0;
+  background-color: #d9d9d9;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #3e3c3c;
+  word-wrap:break-word;
+  margin-bottom: 12px;
+}
+#room_participants li {
+  color: black;
+  list-style: none;
+  background-color:  #cccccc;
+  border-bottom: 1px solid #3d3d42;
+  padding: 10px 0;
+  background-color: #d9d9d9;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #3e3c3c;
+  word-wrap:break-word;
+  margin-bottom: 12px;
+}
+.unmute {
+  color: red;
+}
+.greenicon {
+  color:white;
+}
+.navhover :hover{
+  background-color: #3377ff;
+}
+.navhover :active{
+  background-color: white;
+}
+.navhover :focus{
+  background-color: white;
+}
+.navhove :hover{
+  background-color:#ccdcff;
+}
+.btn{
+    background:transparent;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 570;
+    line-height: 1;
+    margin: 8px;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display:inline-block;
+    outline:none;
+    position:relative;
+    top:0;
+    text-shadow:0 1px 1px rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+     transition: all 0.2s ease-in-out 0s;
+}
+.red{
+    background:#e84c3d;
+    color:#fff;
+    box-shadow: 0 3px 0 #d82a1a;
+}
+.red:hover{
+    background:#f57b8a;
+}
+.red:active, .red:focus{
+    background:#e63b2b;
+}
+.rounded{
+    border-radius:7px;
+}
+.red.press-me:focus{
+    box-shadow: 0 2px 0 #d82a1a;
+}
+#popop{
+  display:none;
+  color:green;
+  font-size: 20px;
+}
+#end {
+  visibility: hidden;
+}
+div.section video:nth-child(even)
+{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+div.section video:nth-child(odd)
+{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

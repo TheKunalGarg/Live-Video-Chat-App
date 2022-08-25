@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video-call</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"  rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.3.1/peerjs.min.js.map"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+
+      </header>
+      <main>
+        <div class="row">
+          <div class="left col-lg-4">
+            <div class="photo-left">
+              <img class="photo" src="<%= user.picture %>"/>
+              <div class="active"></div>
+            </div>
+            <h4 class="name"><%= user.displayName %></h4>
+            <p class="info"><%= user.email %></p>
+            <p class="desc" style="font-size:17px;">Status : <span id="nowstat"><%= status %>&nbsp <i onclick="updatestatus();" style="cursor: pointer;"class="fas fa-edit"></i></span>
+            <span> <form id="updstat" action="/home/" method="post">
+                <input style="color: #777;font-family: 'Montserrat', sans-serif;font-weight: bold;text-align: center;" type="text" id="name" name="status" style="margin-top:-15px;">
+           </form></span></p>
+            <div class="stats row">
+            </div>
+          </div>
+          <div class="right col-lg-8">
+            <ul class="nav">
+              <li id="rooms" class="now" onclick="room();">Create/Join Room</li>
+              <li id ="invitess" onclick="invites();">Invites</li>
+              <li id="bookmarkss" onclick="bookmarks();">bookmarks</li>
+            </ul>
+            <div class="row gallery " id="room" style="margin-left:50px;">
+              <div class="col-sm-4">
+                <a href="https://arrogant-mountie-58191.herokuapp.com/room">
+              <i onmouseover="mystyle();" onmouseout="mxstyle();" style="color:#008ae6;font-size:50px;margin-left:4.5px;margin-bottom:5px;" id="createroom" class="fas fa-video icon"></i><br>
+            </a>
+              <h6 style="font-size: 1.1em;"> Create Meet </h6>
+            </div>
+            <div class="col-sm-4">
+            <i onmouseover="mmxstyle();" onmouseout="mmystyle();" onclick="join()" style="color:#008ae6;font-size:50px;margin-left:4.5px;margin-bottom:5px;" id="createroo" class="fas fa-sign-in-alt icon"></i><br>
+            <h6 style="font-size: 1.1em;"> Join Meet </h6>
+            <form id="join_url" action="/home/join/" method="post" style="margin-left:-50px;margin-top:20px;">  <input style="color: #777;font-family: 'Montserrat', sans-serif;font-weight: bold;text-align: center;height:40px;" type="text" name="join_url" placeholder="Enter Meet Link">
+              <button type="submit" id="completed-task" class="fabutton" style="margin-top:10px;">
+                <i class="fas fa-arrow-circle-right iconn"></i>
+              </button>
+            </form>
+        </div>
+            </div>
+            <div class="row gallery tableheight" id="invites">
+              <table class="mytable" id="customers">
+              <tr>
+               <th style="  border-top-left-radius: 10px;">From</th>
+               <th>Date</th>
+               <th style="  border-top-right-radius: 10px;">Accept/Reject</th>
+               </tr>
+               <% if(invite.length==0){ %>
+              <h2> No Invites Yet! </h2>
+                <% } %>
+                <% invite.forEach(function(b){ %>
+                <tr>
+                <td><%= b.name %></td>
+                <td><%= b.date %></td>
+                <td><a href="/room/initial/<%= b.link %>/false"><button class="btn green">Join Meet</button></a></td>
+                  </tr>
+                  <% }) %>
+                 </table>
+            </div>
+            <div class="row gallery tableheight" id="bookmarks">
+              <table class="mytable" id="customers">
+              <tr>
+               <th style="  border-top-left-radius: 10px;">From</th>
+               <th>Date</th>
+               <th style="  border-top-right-radius: 10px;">Message</th>
+               </tr>
+               <% if(bookmark.length==0){ %>
+              <h2> No Bookmarks Added Yet! </h2>
+                <% } %>
+                <% bookmark.forEach(function(b){ %>
+                <tr>
+                <td><%= b.name %></td>
+                <td><%= b.date %></td>
+                <td><%= b.message %></td>
+                  </tr>
+                  <% }) %>
+                 </table>
+            </div>
+      </main>
+    </div>
+      <script src="/js/home.js"></script>
+  </body>
+</html>

@@ -285,7 +285,7 @@ const ShowPAndHideC=()=> {
 //Sharing the meet url details
 const copy_url=()=>{
   const el = document.createElement('textarea');
-  el.value = "https://arrogant-mountie-58191.herokuapp.com/room/initial/" + ROOM_ID +"/false/";
+  el.value = "http://localhost:3000/room/initial/" + ROOM_ID +"/false/";
   document.body.appendChild(el);
   el.select();
   document.getElementById("popop").style.display = "inline";
@@ -301,7 +301,7 @@ const endcall=()=>{
     myVideoStream.getVideoTracks()[0].enabled = false;
     socket.emit("disconnect_user",id,ROOM_ID,username);
     socket.disconnect();
-    window.location.href = "https://arrogant-mountie-58191.herokuapp.com/";
+    window.location.href = "http://localhost:3000/";
 };
 // adding old chats 
 const addchat=(old_messages)=>{

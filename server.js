@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');// required to extract data from form
 var app = express();
 
 function isLoggedIn(req, res, next) {
-  req.user ? next() : res.redirect(`https://arrogant-mountie-58191.herokuapp.com/auth/google`);
+  req.user ? next() : res.redirect(`http://localhost:3000/auth/google`);
 }
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //google auth after getting entry into
 app.get('/', (req, res) => {
-  res.redirect(`https://arrogant-mountie-58191.herokuapp.com/auth/google`);
+  res.redirect(`http://localhost:3000/auth/google`);
 });
 
 app.get('/auth/google',
@@ -164,5 +164,8 @@ io.on("connection", (socket) => {
       });
   });
 });
-
-server.listen(process.env.PORT || 3000);
+var port = 3000;
+app.listen(port, function () {
+    console.log('Server started on port ' + port);
+});
+//server.listen(process.env.PORT || 3000);

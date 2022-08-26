@@ -1,13 +1,13 @@
 const passport = require('passport');//using passport for authentication
 const GoogleStrategy = require('passport-google-oauth2').Strategy;//using strategy of google oauth-2
 
-const GOOGLE_CLIENT_ID = '917984350881-4i6achva2k4vadot7v4rp5hjfkvun24n.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = 'h9H9wU6WLY8DUM6KmKHPta0A';
+const GOOGLE_CLIENT_ID = '1016736664716-mbmtnijl2ihb64c68agj8crlsmcu9ih3.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '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';
 
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "https://arrogant-mountie-58191.herokuapp.com/auth/google/callback",//callback url after completion
+  callbackURL: "http://localhost:3000/auth/google/callback",//callback url after completion
   passReqToCallback: true,
 },
 function(request, accessToken, refreshToken, profile, done) {
